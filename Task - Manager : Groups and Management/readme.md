@@ -1,6 +1,5 @@
-# Tab Manager
+# Tab Manager: Groups and Management
 
-![Tab Manager Logo](https://via.placeholder.com/128) <!-- Replace with your logo -->
 
 **Tab Manager** is a powerful browser extension that helps you organize and manage your browser tabs effortlessly. With features like tab grouping, search, and dynamic organization, Tab Manager simplifies your browsing experience and boosts productivity.
 
@@ -26,4 +25,4 @@
 ### Manual Installation
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/tab-manager.git
+   git clone https://github.com/dinesh-collab/chrome-Extensions.git
