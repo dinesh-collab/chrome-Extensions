@@ -1,0 +1,12 @@
+{
+    "manifest_version": 3,
+    "name": "Tab-manager: Groups and Management",
+    "version": "1.0",
+    "permissions": ["tabs", "storage", "sidePanel"],
+    "side_panel": {
+      "default_path": "sidepanel.html"
+    },
+    "background": {
+      "service_worker": "background.js"
+    }
+  }
