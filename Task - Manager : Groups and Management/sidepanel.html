@@ -3,11 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tab-manager: Groups and Management</title>
+  <title>Tab Manager</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div id="side-panel">
+    <!-- Header -->
+    <!-- <div id="header">
+      <h1>Tab-manager: Groups and Management</h1>
+    </div> -->
+
+    <!-- Buttons -->
+    <div id="button-container">
+      <button id="restore-pinned">Restore Pinned Tabs</button>
+      <button id="toggle-dark-mode">
+        <img src="icons/dark-mode-icon.png" alt="Toggle Dark Mode" />
+      </button>
+    </div>
+
+     <!-- <h2>Pinned Tabs</h2>  -->
+    <ul id="restore-pinned"></ul> 
+
+
+    <!-- <button id="save-all-tabs">Save All Tabs</button>
+    <button id="restore-session">Restore Session</button> -->
     <!-- Search Bar -->
     <div id="search-container">
       <input type="text" id="search-input" placeholder="Search tabs...">
@@ -18,10 +37,7 @@
       <!-- Groups will be dynamically added here -->
     </div>
 
-    <!-- No Tabs Message -->
-    <div id="no-tabs-message" style="display: none;">
-      No tabs open.
-    </div>
+ 
   </div>
 
   <script src="sidepanel.js"></script>

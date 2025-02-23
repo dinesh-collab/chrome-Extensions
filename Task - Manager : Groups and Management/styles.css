@@ -1,73 +1,347 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-  }
-  
-  #side-panel {
-    width: 300px;
-    height: 100vh;
-    padding: 10px;
-    box-sizing: border-box;
-  }
-  
-  #search-container {
-    margin-bottom: 10px;
-  }
-  
-  #search-input {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  #group-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .group-item {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    overflow: hidden;
-  }
-  
-  .group-header {
-    padding: 10px;
-    background-color: #f0f0f0;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .tab-list {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    padding: 10px;
-  }
-  
-  .group-item:not(.collapsed) .tab-list {
-    display: flex;
-  }
-  
-  .tab-item {
-    padding: 5px;
-    cursor: pointer;
-    background-color: #fff;
-    border: 1px solid #eee;
-    border-radius: 3px;
-  }
-  
-  .tab-item:hover {
-    background-color: #f0f0f0;
-  }
-  
-  #no-tabs-message {
-    padding: 10px;
-    text-align: center;
-    color: #888;
-  }
+  font-family: Arial, sans-serif;
+  padding: 10px;
+  background-color: white;
+  color: black;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode {
+  background-color: #333;
+  color: white;
+}
+
+.dark-mode #side-panel {
+  background-color: #444;
+  color: white;
+}
+
+.dark-mode .group-item {
+  background-color: #555;
+  border-color: #666;
+}
+
+.dark-mode .group-header {
+  background-color: #666;
+  color: white;
+}
+
+.dark-mode .tab-item {
+  background-color: #777;
+  border-color: #888;
+  color: white;
+}
+
+.dark-mode .tab-item:hover {
+  background-color: #888;
+}
+
+.dark-mode .pinned {
+  background-color: #444;
+}
+
+button {
+  padding: 8px 12px;
+  margin: 5px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #0078d7;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #005bb5;
+}
+
+#restore-pinned, #toggle-dark-mode {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  cursor: pointer;
+  padding: 5px;
+  border-bottom: 1px solid #ccc;
+}
+
+li:hover {
+  background-color: #f0f0f0;
+}
+
+#side-panel {
+  width: 100%;
+  height: 100vh;
+  padding: 15px;
+  box-sizing: border-box;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+#header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#header h1 {
+  font-size: 20px;
+  margin: 0;
+  color: #0078d7;
+}
+
+/* Search Bar */
+#search-container {
+  margin-bottom: 15px;
+}
+
+#search-input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+}
+
+#search-input:focus {
+  border-color: #0078d7;
+  box-shadow: 0 0 5px rgba(0, 120, 215, 0.3);
+}
+
+/* Group All Tabs Button */
+#group-tabs-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #0078d7;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease;
+}
+
+#group-tabs-button:hover {
+  background-color: #005bb5;
+}
+
+/* Group List */
+#group-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.group-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.group-header {
+  padding: 10px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.group-header:hover {
+  background-color: #f0f0f0;
+}
+
+.group-header span {
+  font-size: 14px;
+}
+
+.tab-list {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+}
+
+.group-item:not(.collapsed) .tab-list {
+  display: flex;
+}
+
+.tab-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.tab-item:hover {
+  background-color: #e0e0e0;
+}
+
+/* Pinned Tabs */
+.pinned {
+  background-color: #fff3cd; /* Highlight pinned tabs */
+}
+
+/* Pin and Unpin Buttons */
+.pin-button, .unpin-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+}
+
+.pin-button img, .unpin-button img {
+  width: 16px; /* Small size for pin/unpin icons */
+  height: 16px;
+}
+
+.pin-button:hover {
+  opacity: 0.8; /* Slight fade on hover */
+}
+
+.unpin-button:hover {
+  opacity: 0.8;
+}
+
+/* Close Button */
+.close-button {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0 5px;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover {
+  color: #ff0000;
+}
+
+/* No Tabs Message */
+#no-tabs-message {
+  padding: 20px;
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+}
+
+#button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+#toggle-dark-mode {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+#toggle-dark-mode img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Group Header */
+.group-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+}
+
+.group-header img {
+  margin-right: 8px;
+}
+
+.group-header span {
+  font-size: 14px;
+  color: #333;
+}
+
+.dark-mode .group-header {
+  background-color: #444;
+  color: white;
+}
+
+.dark-mode .group-header span {
+  color: white;
+}
+
+.tab-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  margin: 4px 0;
+  border-radius: 4px;
+  background: #f5f5f5;
+  transition: all 0.2s;
+}
+
+.tab-favicon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.tab-title {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.access-badge {
+  margin: 0 8px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  background: #ddd;
+  font-size: 0.8em;
+}
+
+.button-container {
+  display: flex;
+  gap: 4px;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.icon-button:hover {
+  opacity: 1;
+}
+
+.pinned {
+  background-color: #fffbe6;
+}
